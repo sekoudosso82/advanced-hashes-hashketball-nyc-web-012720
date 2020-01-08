@@ -333,7 +333,7 @@ def long_name_steals_a_ton?
  big_score = most_points_scored
  long_name = player_with_longest_name 
   
- big_score == long_name ? 
+ big_score == long_name
   
   # binding.pry 
 end 
