@@ -330,10 +330,27 @@ end
 
 def long_name_steals_a_ton?
   
- big_score = most_points_scored
  long_name = player_with_longest_name 
   
- big_score == long_name
+  hash = game_hash
+  num_of_players = (hash[:home][:players]).length
+  counter = 0
+  
+  max_steal = 0
+  max_steal_name = nil 
+  
+      while counter < num_of_players
+          if (hash[:home][:players][counter][:steals] >max_steal)
+            max_steal = hash[:home][:players][counter][:steals]
+            max_steal_name = hash[:home][:players][counter][:player_name]
+          end  
+          if (hash[:away][:players][counter][:steals]>max_steal)
+            max_steal = hash[:away][:players][counter][:steals]
+            max_steal_name = hash[:away][:players][counter][:player_name]
+          end 
+        counter += 1
+      end
+      long_name == max_steal_name ? true : false 
   
   # binding.pry 
 end 
