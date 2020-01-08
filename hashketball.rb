@@ -238,10 +238,8 @@ def big_shoe_rebounds#(team_name)
   # binding.pry
   num_of_players = (hash[:home][:players]).length
   counter = 1
-  
   max = hash[:home][:players][0][:shoe] 
   player_b_n = hash[:home][:players][0][:rebounds]
-  
       while counter < num_of_players
         if (hash[:home][:players][counter][:shoe]>max)
           max = hash[:home][:players][counter][:shoe]
@@ -249,7 +247,6 @@ def big_shoe_rebounds#(team_name)
         end 
         counter += 1
       end
-      
   max1 = hash[:away][:players][0][:shoe] 
   player_b_n_1 = hash[:away][:players][0][:rebounds]
   
@@ -260,11 +257,76 @@ def big_shoe_rebounds#(team_name)
         end 
         counter += 1
       end
-     
   big_max = [player_b_n_1, player_b_n].max
 end 
 
+def most_points_scored 
+  hash = game_hash
+  num_of_players = (hash[:home][:players]).length
+  counter = 1
+  max = hash[:home][:players][0][:points] 
+  player_max_pts = hash[:home][:players][0][:player_name]
+  
+  second_max = hash[:away][:players][0][:points] 
+  player_max_pts01 = hash[:away][:players][0][:player_name]
+  
+      while counter < num_of_players
+          if (hash[:home][:players][counter][:points]>max)
+            max = hash[:home][:players][counter][:points]
+            player_max_pts = hash[:home][:players][counter][:player_name]
+          end 
+          if (hash[:away][:players][counter][:points]>second_max)
+            second_max = hash[:away][:players][counter][:points]
+            player_max_pts01 = hash[:away][:players][counter][:player_name]
+          end 
+        counter += 1
+      end
+      # binding.pry 
+   max > second_max ? player_max_pts : player_max_pts01
+end  
 
+def winning_team 
+  hash = game_hash
+  num_of_players = (hash[:home][:players]).length
+  counter = 0
+  
+  home_team_pts = 0 
+  away_team_pts = 0
+  
+      while counter < num_of_players
+          home_team_pts += hash[:home][:players][counter][:points]
+          away_team_pts += hash[:away][:players][counter][:points]
+          counter += 1
+      end
+      home_team_pts>away_team_pts ? hash[:home][:team_name] : hash[:away][:team_name]
+      # binding.pry 
+end  
+
+def player_with_longest_name 
+  hash = game_hash
+  num_of_players = (hash[:home][:players]).length
+  counter = 1 
+  
+  home_max = hash[:home][:players][0][:player_name].length
+  home_max_p = hash[:home][:players][0][:player_name]
+  away_max = hash[:away][:players][0][:player_name].length
+  away_max_p = hash[:away][:players][0][:player_name]
+  
+      while counter < num_of_players
+          if (hash[:home][:players][counter][:player_name].length>home_max)
+            home_max_p = hash[:home][:players][counter][:player_name]
+            home_max = hash[:home][:players][counter][:player_name].length
+          end  
+          if (hash[:away][:players][counter][:player_name].length>away_max)
+            away_max_p = hash[:away][:players][counter][:player_name]
+            away_max = hash[:away][:players][counter][:player_name].length
+          end 
+        counter += 1
+      end
+      # binding.pry 
+  home_max > away_max ? home_max_p : away_max_p
+  
+end  
 
 
 
