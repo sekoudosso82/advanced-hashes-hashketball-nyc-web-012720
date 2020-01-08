@@ -330,7 +330,10 @@ end
 
 def long_name_steals_a_ton?
   
-  player_with_longest_name == most_points_scored ? true : false 
+ big_score = most_points_scored
+ long_name = player_with_longest_name 
+  
+ big_score == long_name ? true : false 
   
   
 end 
