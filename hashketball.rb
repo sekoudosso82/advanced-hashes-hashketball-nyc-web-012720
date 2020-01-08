@@ -328,7 +328,10 @@ def player_with_longest_name
   
 end  
 
-def 
+def long_name_steals_a_ton?
+  
+  player_with_longest_name == most_points_scored ? true : false 
+  
   
 end 
 
